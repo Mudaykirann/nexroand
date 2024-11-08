@@ -13,11 +13,14 @@ export default function Login() {
     const [error, setError] = useState(null);
     const router = useRouter();
 
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const handleLogin = async (e) => {
         console.log("USER is LOGGING")
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:7000/api/auth/v1/login', {
+            const response = await axios.post(`${apiUrl}/api/auth/v1/login`, {
                 username,
                 password,
             });

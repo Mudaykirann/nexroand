@@ -4,15 +4,20 @@ import axios from 'axios';
 export default function Modal({ username, onClose }) {
     const [history, setHistory] = useState([]);
 
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
         async function fetchHistory() {
+            console.log(apiUrl);
             try {
-                const response = await axios.post("http://localhost:7000/api/user/v1/your-history", { username });
+                const response = await axios.post(`${apiUrl}/api/user/v1/your-history`, { username });
                 if (response.data.success) {
                     setHistory(response.data.data);
                 }
             } catch (error) {
                 console.error('Error fetching points history:', error);
+                console.log(error)
             }
         }
         fetchHistory();

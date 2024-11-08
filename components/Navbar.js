@@ -1,4 +1,4 @@
-// components/Navbar.js
+
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '@/redux/slices/userSlice';
@@ -31,7 +31,7 @@ export default function Navbar() {
                         </div>
                     ) : (
                         <Link href="/Login">
-                            <p className="font-medium text-xl text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400">
+                            <p className="font-medium text-xl rounded-md bg-green-500  px-3 py-2 text-white hover:bg-green-700  transition duration-300 ">
                                 Login
                             </p>
                         </Link>

@@ -15,6 +15,9 @@ export default function RegisterForm() {
     const [error, setError] = useState(null);
     const router = useRouter();
 
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -24,7 +27,7 @@ export default function RegisterForm() {
         setError(null);
 
         try {
-            const response = await axios.post('http://localhost:7000/api/auth/v1/register', formData);
+            const response = await axios.post(`${apiUrl}/api/auth/v1/register`, formData);
 
             if (response.data.success) {
                 localStorage.setItem('user', JSON.stringify(response.data.data));
